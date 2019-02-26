@@ -1,0 +1,9 @@
+f = open(filename_input, 'r')
+datafile = ''.join(f.readlines())
+f.close()
+data = [ '{} {} 1\n'.format(cit[10:], ind[10:]) for cit, ind in 
+        zip(re.findall(r'#citation\d+', datafile),
+            re.findall(r'#index\d+', datafile))]
+f = open(filename_out, 'a')
+f.writelines(data)
+f.close()
